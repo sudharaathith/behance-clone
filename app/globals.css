@@ -5,3 +5,9 @@
 :root{
     --nav-pos:"-270px";
 }
+
+@layer utilities {
+    .text-clamp {
+      font-size: clamp(32px, 5vw, 65px);
+    }
+  }
