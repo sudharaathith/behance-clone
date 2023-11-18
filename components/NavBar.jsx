@@ -3,7 +3,7 @@ import { Notification } from "./Notification";
 
 function NavBar() {
   return (
-    <div className="flex bg-white justify-between px-2 items-center border z-20 fixed top-0 left-0 w-screen">
+    <div className="flex bg-white shadow-md justify-between px-2 items-center z-20 fixed top-0 left-0 w-screen">
       <div className=" flex items-center gap-3 font-semibold text-md">
         <MenueTogel />
         <div className="text-xl font-bold">Behance</div>

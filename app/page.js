@@ -4,13 +4,14 @@ import BannerItem from "@/components/BannerItem";
 import Share from "@/SVG/Share";
 import Sell from "@/SVG/Sell";
 import Job from "@/SVG/Job";
+import SearchArea from "@/components/SearchArea";
 
 export default function Home() {
   return (
     <main className="flex flex-col">
       <NavBar />
       {/* Banner with image */}
-      <div className='flex  flex-col w-screen fixed max-md:hidden'>
+      <div className='flex banner relative flex-col w-full max-md:hidden'>
         <div
           style={{
             backgroundImage: `url(${bgimg.src})`,
@@ -29,6 +30,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <SearchArea />
+      <div className="h-[10000px]" />
     </main>
   );
 }
