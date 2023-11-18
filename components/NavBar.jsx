@@ -1,4 +1,6 @@
 import Bell from "@/SVG/Bell"
+import * as HoverCard from '@radix-ui/react-hover-card';
+import { Notification } from "./Notification";
 
 
 function NavBar() {
@@ -13,7 +15,7 @@ function NavBar() {
             <NavItem>Jobs</NavItem>
             </div>
         <div className="flex gap-1 mx-3 items-center">
-            <div className="mx-3"><Bell className="w-5 h-5 hover:fill-slate-500 cursor-pointer"/></div>
+            <div className="mx-3"><Notification /></div>
             <div><button className="px-4 border transition-all border-[#dee8ff] text-[#0057ff] text-[14px] font-semibold py-1 hover:border-[#b7cdff] hover:bg-[#dee8ff] rounded-full  bg-[#f5f8ff]">Log In</button></div>
             <div><button className="px-4 border transition-all  border-transparent bg-[#0057ff] text-[14px] font-semibold py-1 hover:bg-[#003ecb] rounded-full  text-[#f5f8ff]">Sign Up</button></div>
         </div>
@@ -26,5 +28,6 @@ function NavItem(props){
         <div className="py-4 border-b-2 transition-all border-transparent  hover:border-black hover:cursor-pointer">{props.children}</div>
     )
 }
+
 
 export default NavBar
