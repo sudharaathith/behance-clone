@@ -62,17 +62,15 @@ function SearchArea() {
     const handleScroll = () => {
       if (ref.current) {
         if (window.innerWidth >= 768) {
-          // Assuming 'md' screen size in Tailwind is 768px
           if (!topOffset.current) {
             topOffset.current =
-              ref.current.getBoundingClientRect().top + window.pageYOffset - 46; // Set the desired top offset in pixels
+              ref.current.getBoundingClientRect().top + window.pageYOffset - 46;
           }
 
           const scrollY = window.scrollY || window.pageYOffset;
           ref.current.style.position = "fixed";
           const el = document.getElementById("cardarea");
           if (scrollY > topOffset.current) {
-            console.log(el);
             ref.current.style.top = `57px`;
             el.style.marginTop = "127px";
           } else {
@@ -148,7 +146,6 @@ function Filter(props) {
         select={select == 0}
         onClick={(e) => {
           setSelect(0);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -158,7 +155,6 @@ function Filter(props) {
         select={select == 1}
         onClick={(e) => {
           setSelect(1);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -168,7 +164,6 @@ function Filter(props) {
         select={select == 2}
         onClick={(e) => {
           setSelect(2);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -178,7 +173,6 @@ function Filter(props) {
         select={select == 3}
         onClick={(e) => {
           setSelect(3);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -188,7 +182,6 @@ function Filter(props) {
         select={select == 4}
         onClick={(e) => {
           setSelect(4);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -198,7 +191,6 @@ function Filter(props) {
         select={select == 5}
         onClick={(e) => {
           setSelect(5);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
@@ -208,7 +200,6 @@ function Filter(props) {
         select={select == 6}
         onClick={(e) => {
           setSelect(6);
-          console.log(e.target.innerText);
           router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >

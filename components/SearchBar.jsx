@@ -100,7 +100,6 @@ function SearchBar() {
                         onClick={() => {
                             setText(result);
                             setSelectedOptionIndex(-1);
-                            console.log("Clicked on an option:", result);
                         }}
                         onMouseEnter={() => setSelectedOptionIndex(index)}
                     >
