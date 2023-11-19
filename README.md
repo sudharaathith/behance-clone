@@ -4,7 +4,7 @@ Behance Website Clone for Presidio
 This project aims to replicate the [Behance](https://www.behance.net/) website, focusing primarily on frontend development to showcase my skills in this area. Developed using Next.js, it serves as a precursor to a planned full-stack implementation.
 
 ## Installation
-Ensure you have Node.js installed, preferably version 14.0.3 or higher. If not, you can download it [here](https://nodejs.org/en/) Once you have the proper Node.js version, clone this repository and execute the following command in your terminal:
+Ensure you have Node.js installed. If not, you can download it [here](https://nodejs.org/en/) Once you have the proper Node.js version, clone this repository and execute the following command in your terminal:
 ```bash
 npm install
 ```
