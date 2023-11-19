@@ -3,18 +3,21 @@ import Edit from "@/SVG/Edit";
 import Search from "@/SVG/Search";
 import { useEffect, useRef, useState } from "react";
 import Options from "./Options";
+import SearchBar from "./SearchBar";
 
-const op = [
-  {name:"Recommended"},
-  {name:"Curated"},
-  {name:"Most Appreciated"},
-  {name:"Most Viewed"},
-  {name:"Most Discussed"},
-]
 
 function SearchArea() {
   const ref = useRef(0);
   const topOffset = useRef(false);
+  const [time, setTime] = useState(false)
+  const op = [
+    {name:"Recommended", callBack:()=>{setTime(false)}},
+    {name:"Curated", callBack:()=>{setTime(false)}},
+    {name:"Most Appreciated", callBack:()=>{setTime(true)}},
+    {name:"Most Viewed", callBack:()=>{setTime(true)}},
+    {name:"Most Discussed", callBack:()=>{setTime(true)}},
+    {name:"Recent" , callBack:()=>{setTime(false)}}
+  ]
   useEffect(() => {
     const handleScroll = () => {
       if (ref.current) {
@@ -45,22 +48,16 @@ function SearchArea() {
   return (
     <div
       ref={ref}
-      className="flex flex-col py-5 shadow-md justify-center items-center  bg-white w-full max-md:fixed max-md:top-[57px] px-3"
+      className="flex flex-col py-5 shadow-md justify-center items-center gap-2 bg-white w-full max-md:fixed max-md:top-[57px] px-3"
     >
       <div className="flex w-full rounded-full border items-center px-3 gap-2">
-        <div className="flex w-full items-center py-1 gap-2 border-r">
-          <Search className="w-5 h-5 fill-gray-500" />
-          <input
-            className="w-full self-end font-semibold text-lg outline-none"
-            type="text"
-            placeholder="Search the creative world at work"
-          />
-        </div>
+        <SearchBar />
         <Filter />
       </div>
       <div className="flex w-full">
-        <div className="ml-auto">
+        <div className="ml-auto flex gap-7 mr-7">
         <Options name="sort" options={op}/>
+        {time&&<Options name="Time" options={op} />}
         </div>
       </div>
     </div>
