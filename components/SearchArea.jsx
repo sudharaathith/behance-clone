@@ -4,20 +4,60 @@ import Search from "@/SVG/Search";
 import { useEffect, useRef, useState } from "react";
 import Options from "./Options";
 import SearchBar from "./SearchBar";
-
+import { useRouter, useSearchParams } from "next/navigation";
 
 function SearchArea() {
   const ref = useRef(0);
+  const pr = useSearchParams();
+  const router = useRouter();
+  const cat = pr.get("cat") || "Projects";
+  const sot = pr.get("sort") || "Recommended";
   const topOffset = useRef(false);
-  const [time, setTime] = useState(false)
+  const [time, setTime] = useState(false);
   const op = [
-    {name:"Recommended", callBack:()=>{setTime(false)}},
-    {name:"Curated", callBack:()=>{setTime(false)}},
-    {name:"Most Appreciated", callBack:()=>{setTime(true)}},
-    {name:"Most Viewed", callBack:()=>{setTime(true)}},
-    {name:"Most Discussed", callBack:()=>{setTime(true)}},
-    {name:"Recent" , callBack:()=>{setTime(false)}}
-  ]
+    {
+      name: "Recommended",
+      callBack: () => {
+        setTime(false);
+        router.push("/?cat=" + cat + "&sort=Recommended",  { scroll: false });
+      },
+    },
+    {
+      name: "Curated",
+      callBack: () => {
+        setTime(false);
+        router.push("/?cat=" + cat + "&sort=Curated",  { scroll: false });
+      },
+    },
+    {
+      name: "Most Appreciated",
+      callBack: () => {
+        setTime(true);
+        router.push("/?cat=" + cat + "&sort=Most%20Appreciated",  { scroll: false });
+      },
+    },
+    {
+      name: "Most Viewed",
+      callBack: () => {
+        setTime(true);
+        router.push("/?cat=" + cat + "&sort=Most%20Viewed",  { scroll: false });
+      },
+    },
+    {
+      name: "Most Discussed",
+      callBack: () => {
+        setTime(true);
+        router.push("/?cat=" + cat + "&sort=Most%20Discussed",  { scroll: false });
+      },
+    },
+    {
+      name: "Recent",
+      callBack: () => {
+        setTime(false);
+        router.push("/?cat=" + cat + "&sort=Recent",  { scroll: false });
+      },
+    },
+  ];
   useEffect(() => {
     const handleScroll = () => {
       if (ref.current) {
@@ -32,13 +72,12 @@ function SearchArea() {
           ref.current.style.position = "fixed";
           const el = document.getElementById("cardarea");
           if (scrollY > topOffset.current) {
-            console.log(el)
+            console.log(el);
             ref.current.style.top = `57px`;
-            el.style.marginTop = "127px"
+            el.style.marginTop = "127px";
           } else {
             ref.current.style.position = "static";
-            el.style.marginTop = "10px"
-            
+            el.style.marginTop = "10px";
           }
         }
       }
@@ -61,8 +100,8 @@ function SearchArea() {
       </div>
       <div className="flex w-full">
         <div className="ml-auto flex gap-7 mr-7">
-        <Options name="sort" options={op}/>
-        {time&&<Options name="Time" options={op} />}
+          <Options name="sort" options={op} />
+          {/* {time&&<Options name="Time" options={op} />} */}
         </div>
       </div>
     </div>
@@ -84,62 +123,93 @@ function FilterItem(props) {
   );
 }
 
+const cats = [
+  "Projects",
+  "Assets",
+  "Images",
+  "Prototype",
+  "Streams",
+  "People",
+  "Moodbord",
+];
+
 function Filter(props) {
-  const [select, setSelect] = useState(0);
+  const router = useRouter();
+  const pr = useSearchParams();
+  const cat = pr.get("cat") || "Projects";
+  const sot = pr.get("sort") || "Recommended";
+  const [select, setSelect] = useState(cat.indexOf(pr));
+  useEffect(() => {
+    setSelect(cats.indexOf(cat));
+  }, [cat]);
   return (
     <div className=" flex gap-1 border py-2 px-3 rounded-r-full border-l-0">
       <FilterItem
         select={select == 0}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(0);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Projects
       </FilterItem>
       <FilterItem
         select={select == 1}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(1);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Assets
       </FilterItem>
       <FilterItem
         select={select == 2}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(2);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Images
       </FilterItem>
       <FilterItem
         select={select == 3}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(3);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Prototype
       </FilterItem>
       <FilterItem
         select={select == 4}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(4);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Streams
       </FilterItem>
       <FilterItem
         select={select == 5}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(5);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         People
       </FilterItem>
       <FilterItem
         select={select == 6}
-        onClick={() => {
+        onClick={(e) => {
           setSelect(6);
+          console.log(e.target.innerText);
+          router.push("/?cat=" + e.target.innerText+"&sort="+sot, { scroll: false });
         }}
       >
         Moodbord

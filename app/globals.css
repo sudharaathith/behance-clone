@@ -33,5 +33,4 @@ select:hover > option:checked {
   z-index: 20; /* Ensure it's above other content */
 }
 
-
-
+/* Define the animation */
