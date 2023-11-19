@@ -50,7 +50,7 @@ function SearchArea() {
       ref={ref}
       className="flex flex-col py-5 shadow-md justify-center items-center gap-2 bg-white w-full max-md:fixed max-md:top-[57px] px-3"
     >
-      <div className="flex w-full rounded-r-full items-center ">
+      <div className="flex w-full rounded-r-full items-center px-3">
         <SearchBar />
         <Filter />
       </div>
@@ -68,7 +68,7 @@ function FilterItem(props) {
   return (
     <div
       onClick={props.onClick}
-      className={` font-semibold text-[10px] cursor-pointer ${
+      className={` font-semibold text-[13px] cursor-pointer ${
         props.select
           ? "bg-black text-white"
           : "bg-white text-black hover:bg-gray-100"
@@ -82,7 +82,7 @@ function FilterItem(props) {
 function Filter(props) {
   const [select, setSelect] = useState(0);
   return (
-    <div className=" flex gap-1 border py-3 px-3 rounded-r-full border-l-0">
+    <div className=" flex gap-1 border py-2 px-3 rounded-r-full border-l-0">
       <FilterItem
         select={select == 0}
         onClick={() => {

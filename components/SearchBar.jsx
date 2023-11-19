@@ -21,10 +21,17 @@ function SearchBar() {
 
     const debouncedSearch = useCallback(
         debounce((searchText) => {
-            const reg = new RegExp(searchText, 'i');
-            setAutocomplete(words.filter(term => term.match(reg)).slice(0, 5));
-        }, 300), []
+            const regStartsWith = new RegExp(`^${searchText}`, 'i');
+            const regContains = new RegExp(searchText, 'i');
+    
+            const startsWith = words.filter(term => term.match(regStartsWith));
+            const contains = words.filter(term => term.match(regContains) && !startsWith.includes(term));
+    
+            const sortedAutocomplete = [...startsWith, ...contains].slice(0, 5);
+            setAutocomplete(sortedAutocomplete);
+        }, 300), [words]
     );
+    
 
     useEffect(() => {
         if (text !== "") {
@@ -39,12 +46,12 @@ function SearchBar() {
     };
 
     const handleBlur = () => {
-        setOpen(false);
+        setTimeout(()=>{setOpen(false)},100)
     };
 
     const handleInputChange = (e) => {
         setText(e.target.value);
-        setSelectedOptionIndex(-1); // Reset selected index when input changes
+        setSelectedOptionIndex(-1);
     };
 
     const handleKeyDown = (e) => {
@@ -67,7 +74,7 @@ function SearchBar() {
     return (
         <div className="flex w-full py-2 gap-2 border-r items-center relative rounded-l-full border"
              style={{borderRadius: open ? "12px 0px 0px" : ""}}>
-            <div className="flex items-center pl-4 w-full">
+            <div className="flex gap-2 items-center pl-4 w-full">
                 <Search className="w-5 h-5 fill-gray-500"/>
                 <input
                     ref={inputRef}
@@ -81,21 +88,30 @@ function SearchBar() {
                     onKeyDown={handleKeyDown}
                 />
             </div>
-            {open && autocomplete.length > 0 && (
-                <div className="flex flex-col pl-4 top-8 absolute w-full border border-t-0 rounded-t-none pt-2 bg-white rounded-2xl">
+            {open && (
+                <div className="flex flex-col top-8 absolute w-full z-[2] border border-t-0 rounded-t-none pt-2 bg-white rounded-2xl">
+                    <div className=" text-gray-500 px-4 text-sm font-semibold">Projects</div>
+                    <div className="flex flex-col min-h-[100px]">
+
                     {autocomplete.map((result, index) => (
                         <div
-                            key={index}
-                            className={selectedOptionIndex === index ? 'bg-gray-200' : ''}
-                            onClick={() => {
-                                setText(result);
-                                setOpen(false);
-                                setSelectedOptionIndex(-1);
-                            }}
-                        >
-                            {result}
-                        </div>
+                        key={index}
+                        className={` cursor-pointer text-lg px-4 select-none text-gray-800 font-semibold ${selectedOptionIndex === index ? 'bg-gray-200' : ''}`}
+                        onClick={() => {
+                            setText(result);
+                            setSelectedOptionIndex(-1);
+                            console.log("Clicked on an option:", result);
+                        }}
+                        onMouseEnter={() => setSelectedOptionIndex(index)}
+                    >
+                        {result}
+                    </div>
+                    
                     ))}
+                    <div>
+
+                    </div>
+                    </div>
                 </div>
             )}
         </div>
