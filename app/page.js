@@ -4,20 +4,23 @@ import BannerItem from "@/components/BannerItem";
 import Share from "@/SVG/Share";
 import Sell from "@/SVG/Sell";
 import Job from "@/SVG/Job";
+import SearchArea from "@/components/SearchArea";
+import CardArea from "@/components/CardArea";
 
 export default function Home() {
+  console.log(bgimg)
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col bg-white">
       <NavBar />
       {/* Banner with image */}
-      <div className='flex  flex-col w-screen fixed max-md:hidden'>
+      <div className='flex banner relative flex-col w-full max-md:hidden'>
         <div
           style={{
             backgroundImage: `url(${bgimg.src})`,
             backgroundPosition: "50% 0%",
             backgroundSize:"cover"
           }}
-          className=' pb-9 pt-28 after:content-[""] z-[-1] after:bg-[rgba(0,0,0,.45)] after:z-[-1] after:w-full after:h-full after:absolute after:top-0'
+          className=' pb-9 pt-28 after:content-[""] z-[1] after:bg-[rgba(0,0,0,.45)] after:z-[-1] after:w-full after:h-full after:absolute after:top-0'
         >
           <h1 className="z-[2] text-clamp text-center text-white font-bold">Showcase Your Work & Get Paid</h1>
           <h1 className="z-[2] text-center text-lg text-[22px] mb-9 text-white ">Join Behance, the world's largest creative network</h1>
@@ -29,6 +32,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <SearchArea />
+      <CardArea />
     </main>
   );
 }
