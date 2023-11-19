@@ -1,8 +1,9 @@
 import * as Select from '@radix-ui/react-select';
 import React from 'react';
 function Options(props) {
+    console.log(props.options)
   return (
-    <Select.Root defaultValue='appl'>
+    <Select.Root >
             <Select.Trigger
       className=""
       aria-label="Food"
@@ -15,35 +16,15 @@ function Options(props) {
         <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
         </Select.ScrollUpButton>
         <Select.Viewport className="p-[5px]">
-          <Select.Group>
-            <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
-              Fruits
-            </Select.Label>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
-          </Select.Group>
-
-          <Select.Separator className="h-[1px] bg-violet6 m-[5px]" />
-
-          <Select.Group>
-            <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
-              Vegetables
-            </Select.Label>
-            <SelectItem value="aubergine">Aubergine</SelectItem>
-            <SelectItem value="broccoli">Broccoli</SelectItem>
-            <SelectItem value="carrot" disabled>
-              Carrot
-            </SelectItem>
-            <SelectItem value="courgette">Courgette</SelectItem>
-            <SelectItem value="leek">Leek</SelectItem>
-          </Select.Group>
-
-          <Select.Separator className="h-[1px] bg-violet6 m-[5px]" />
-
-          <Select.Group>
+            
+          
+            {/* <SelectItem value="apple">Apple</SelectItem> */}
+            {
+                props.options.map((e)=>{
+                    <SelectItem value={e.name}>{e.name}</SelectItem>
+                })
+            }
+                      <Select.Group>
             <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
               Meat
             </Select.Label>
@@ -51,7 +32,13 @@ function Options(props) {
             <SelectItem value="chicken">Chicken</SelectItem>
             <SelectItem value="lamb">Lamb</SelectItem>
             <SelectItem value="pork">Pork</SelectItem>
+            {
+                props.options.map((e,n)=>(
+                    <SelectItem key={n} value={e.name.toLowerCase()}>{e.name}</SelectItem>
+                ))
+            }
           </Select.Group>
+
         </Select.Viewport>
         <Select.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
         </Select.ScrollDownButton>
