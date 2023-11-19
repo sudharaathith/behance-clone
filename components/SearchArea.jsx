@@ -29,11 +29,16 @@ function SearchArea() {
           }
 
           const scrollY = window.scrollY || window.pageYOffset;
+          ref.current.style.position = "fixed";
+          const el = document.getElementById("cardarea");
           if (scrollY > topOffset.current) {
-            ref.current.style.position = "fixed";
+            console.log(el)
             ref.current.style.top = `57px`;
+            el.style.marginTop = "127px"
           } else {
             ref.current.style.position = "static";
+            el.style.marginTop = "10px"
+            
           }
         }
       }
@@ -48,7 +53,7 @@ function SearchArea() {
   return (
     <div
       ref={ref}
-      className="flex flex-col py-5 shadow-md justify-center items-center gap-2 bg-white w-full max-md:fixed max-md:top-[57px] px-3"
+      className="flex z-10 flex-col py-5 shadow-md justify-center items-center gap-2 bg-white w-full max-md:fixed max-md:top-[57px] px-3"
     >
       <div className="flex w-full rounded-r-full items-center px-3">
         <SearchBar />
