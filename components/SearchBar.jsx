@@ -27,7 +27,9 @@ function SearchBar() {
             const startsWith = words.filter(term => term.match(regStartsWith));
             const contains = words.filter(term => term.match(regContains) && !startsWith.includes(term));
     
-            const sortedAutocomplete = [...startsWith, ...contains].slice(0, 5);
+            let sortedAutocomplete = [...startsWith, ...contains].slice(0, 5);
+            sortedAutocomplete = sortedAutocomplete.map((e)=>(e.charAt(0).toUpperCase() + e.slice(1)
+        ))
             setAutocomplete(sortedAutocomplete);
         }, 300), [words]
     );

@@ -4,12 +4,18 @@
 
 :root {
   --nav-pos: -270px;
+  --cover-st: none;
 }
 
 @layer utilities {
   .text-clamp {
     font-size: clamp(32px, 5vw, 65px);
   }
+}
+
+.cover{
+  display: var(--cover-st);
+  transition: all;
 }
 
 select {

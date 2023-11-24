@@ -151,7 +151,7 @@ function Filter(props) {
   return (
     <div className="max-lg:w-2/5 max-sm:w-full max-sm:mt-1 relative" >
       <button className={((open)?" rounded-t-full border-b-0 ":" transition-all  rounded-r-full max-sm:rounded-l-full ")+"  lg:hidden border w-full py-2 px-3 sm:border-l-0  min-w-[160px]"} onClick={()=>{setOpen(!open)}}>Filter</button>
-      <div className={((open)?"expanding":" closing")+" ease-in-out gap-1 max-lg:min-w-[85vw] max-lg:p-3 bg-white lg:rounded-full max-lg:rounded-b-3xl lg:px-3 lg:border-l-0 lg:rounded-l-none lg:py-2 border max-lg:border-t-0 max-lg:shadow-md max-lg:w-full max-lg:absolute flex max-lg:flex-col "}>
+      <div className={((open)?"expanding":" closing")+" ease-in-out gap-1 max-lg:p-3 bg-white lg:rounded-full max-lg:rounded-b-3xl lg:px-3 lg:border-l-0 lg:rounded-l-none lg:py-2 border max-lg:border-t-0 max-lg:shadow-md max-lg:w-full max-lg:absolute flex max-lg:flex-col "}>
         <FilterItem
           setOpen={setOpen}
           select={select == 0}
