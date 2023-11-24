@@ -40,6 +40,7 @@ function NavBar() {
           </button>
         </div>
       </div>
+      <div className="z-50 fixed top-0 left-0 w-screen h-screen bg-black/10 cover"/>
     </div>
   );
 }

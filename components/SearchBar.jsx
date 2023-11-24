@@ -27,7 +27,9 @@ function SearchBar() {
             const startsWith = words.filter(term => term.match(regStartsWith));
             const contains = words.filter(term => term.match(regContains) && !startsWith.includes(term));
     
-            const sortedAutocomplete = [...startsWith, ...contains].slice(0, 5);
+            let sortedAutocomplete = [...startsWith, ...contains].slice(0, 5);
+            sortedAutocomplete = sortedAutocomplete.map((e)=>(e.charAt(0).toUpperCase() + e.slice(1)
+        ))
             setAutocomplete(sortedAutocomplete);
         }, 300), [words]
     );
@@ -72,8 +74,8 @@ function SearchBar() {
     };
 
     return (
-        <div className="flex w-full py-2 gap-2 border-r items-center relative rounded-l-full border"
-             style={{borderRadius: open ? "12px 0px 0px" : ""}}>
+        <div className="flex w-full py-2 gap-2 border-r pr-1 max-sm:rounded-r-full items-center relative rounded-l-full border"
+             style={{borderRadius: open ? "12px 12px 0px" : ""}}>
             <div className="flex gap-2 items-center pl-4 w-full">
                 <Search className="w-5 h-5 fill-gray-500"/>
                 <input
