@@ -23,17 +23,17 @@ function Options(props) {
 
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content align='end' position='popper' className="z-40 overflow-hidden bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+          <Select.Content align='end' position='popper' className="z-[100] shadow-md overflow-hidden bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
             <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
             </Select.ScrollUpButton>
-            <Select.Viewport className="p-[5px]">
+            <Select.Viewport className="p-[5px] ">
 
 
               {/* <SelectItem value="apple">Apple</SelectItem> */}
 
               {
                 props.options.map((e, n) => (
-                  <SelectItem key={n} value={n}>{e.name}</SelectItem>
+                  <SelectItem className={" hover:bg-gray-100 cursor-pointer"} key={n} value={n}>{e.name}</SelectItem>
                 ))
               }
 

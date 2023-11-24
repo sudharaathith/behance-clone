@@ -50,7 +50,7 @@ function CardArea(props) {
   return (
     <div
       id="cardarea"
-      className="  min-h-[400px] grid gap-12 p-3 sm:p-12 mt-10 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 grid-cols-1 "
+      className=" max-md:mt-[224px]  min-h-[400px] grid gap-12 p-3 sm:p-12 mt-10 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 grid-cols-1 "
     >
       {ls.map((e, n) => (
         <Card setOpen={setOpen} key={n} obj={e} />

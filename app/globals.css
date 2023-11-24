@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --nav-pos: "-270px";}
-
+  --nav-pos: -270px;
+}
 
 @layer utilities {
   .text-clamp {
@@ -16,10 +16,10 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
 }
 
-select:hover > option:checked { 
+select:hover > option:checked {
   background: #000 !important;
 }
 
@@ -33,4 +33,38 @@ select:hover > option:checked {
   z-index: 20; /* Ensure it's above other content */
 }
 
+@keyframes expand {
+  0% {
+    transform: scaleY(0); /* Initial scale */
+    opacity: 0; /* Initial opacity */
+    transform-origin: top;
+  }
+  100% {
+    transform: scaleY(1); /* Scale to double the size */
+    opacity: 1; /* Fade out at the end */
+    transform-origin: top;
+  }
+}
+
+@keyframes close {
+  100% {
+    transform: scaleY(0); /* Initial scale */
+    opacity: 0; /* Initial opacity */
+    transform-origin: top;
+  }
+  0% {
+    transform: scaleY(1); /* Scale to double the size */
+    opacity: 1; /* Fade out at the end */
+    transform-origin: top;
+  }
+}
+@media (max-width: 1024px) {
+  .expanding {
+    animation: expand 0.3s forwards; /* Use the 'expand' animation for 1 second */
+  }
+
+  .closing {
+    animation: close 0.3s forwards;
+  }
+}
 /* Define the animation */
