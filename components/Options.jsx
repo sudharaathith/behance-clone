@@ -3,7 +3,6 @@ import Arrow from '@/SVG/Arrow';
 import * as Select from '@radix-ui/react-select';
 import React from 'react';
 function Options(props) {
-  console.log(props.options)
   return (
     <div>
       <div className=' text-xs font-semibold text-gray-600'>{props.name}</div>

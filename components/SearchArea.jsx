@@ -66,17 +66,15 @@ function SearchArea() {
     const handleScroll = () => {
       if (ref.current) {
         if (window.innerWidth >= 768) {
-          // Assuming 'md' screen size in Tailwind is 768px
           if (!topOffset.current) {
             topOffset.current =
-              ref.current.getBoundingClientRect().top + window.pageYOffset - 46; // Set the desired top offset in pixels
+              ref.current.getBoundingClientRect().top + window.pageYOffset - 46;
           }
 
           const scrollY = window.scrollY || window.pageYOffset;
           ref.current.style.position = "fixed";
           const el = document.getElementById("cardarea");
           if (scrollY > topOffset.current) {
-            console.log(el);
             ref.current.style.top = `57px`;
             el.style.marginTop = "127px";
           } else {

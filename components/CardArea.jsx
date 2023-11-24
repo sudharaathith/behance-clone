@@ -6,19 +6,21 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import FlipMove from 'react-flip-move';
 import { forwardRef } from 'react';
+
 import Like from "@/SVG/Like";
 import View from "@/SVG/View";
 
-function disableScrolling(){
-  var x=window.scrollX;
-  var y=window.scrollY;
-  window.onscroll=function(){window.scrollTo(x, y);};
+function disableScrolling() {
+  var x = window.scrollX;
+  var y = window.scrollY;
+  window.onscroll = function () {
+    window.scrollTo(x, y);
+  };
 }
 
-function enableScrolling(){
-  window.onscroll=function(){};
+function enableScrolling() {
+  window.onscroll = function () {};
 }
-
 
 function CardArea(props) {
   const pr = useSearchParams();
@@ -31,24 +33,21 @@ function CardArea(props) {
     if (sort === "Curated") t = t.sort((a, b) => a.rank - b.rank);
     else if (sort === "Most Appreciated")
       t = t.sort((a, b) => b.likes - a.likes);
-    else if (sort === "Most Viewed") 
-    t = t.sort((a, b) =>  b.views - a.views);
+    else if (sort === "Most Viewed") t = t.sort((a, b) => b.views - a.views);
     else if (sort === "Most Discussed")
-      t = t.sort((a, b) =>  b.discussed - a.discussed);
+      t = t.sort((a, b) => b.discussed - a.discussed);
     else if (sort === "Recent")
-      t = t.sort((a, b) => new Date(b.date) - new Date(a.date) );
+      t = t.sort((a, b) => new Date(b.date) - new Date(a.date));
     setLs(t);
-    console.log(cat, sort);
   }, [cat, sort]);
 
-  useEffect(()=>{
-    if(open){
-      disableScrolling()
+  useEffect(() => {
+    if (open) {
+      disableScrolling();
+    } else {
+      enableScrolling();
     }
-    else{
-      enableScrolling()
-    }
-  },[open])
+  }, [open]);
   return (
     <>
     <FlipMove
@@ -69,6 +68,7 @@ function CardArea(props) {
         </div>}
     </>
 
+
   );
 }
 
@@ -85,6 +85,7 @@ const Card = forwardRef((props, ref) => {
   const [like, setLike] = useState(false);
   return (
     <div ref={ref} className=" group relative" onClick={()=>{props.setOpen(props.obj.url)}}>
+
       <img
         className="w-full group-hover:brightness-75 cursor-pointer transition-all aspect-[25/19] rounded"
         src={props.obj.url}

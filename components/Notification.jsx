@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Bell from "@/SVG/Bell";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { debounce } from "lodash";
@@ -9,7 +9,6 @@ export function Notification(props) {
 
   const toggleNotification = (open) => {
     setIsNotificationOpen(open);
-    // You can perform additional actions based on notification open/close
   };
 
   const debouncedToggleNotification = debounce((open) => {
