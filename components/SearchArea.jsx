@@ -142,14 +142,14 @@ function Filter(props) {
   const cat = pr.get("cat") || "Projects";
   const sot = pr.get("sort") || "Recommended";
   const [select, setSelect] = useState(cat.indexOf(pr));
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     setSelect(cats.indexOf(cat));
   }, [cat]);
   return (
     <div className="max-lg:w-2/5 max-sm:w-full max-sm:mt-1 relative" >
       <button className={((open)?" rounded-t-full border-b-0 ":" transition-all  rounded-r-full max-sm:rounded-l-full ")+"  lg:hidden border w-full py-2 px-3 sm:border-l-0  min-w-[160px]"} onClick={()=>{setOpen(!open)}}>Filter</button>
-      <div className={((open)?"expanding":" closing")+" ease-in-out gap-1 max-lg:p-3 bg-white lg:rounded-full max-lg:rounded-b-3xl lg:px-3 lg:border-l-0 lg:rounded-l-none lg:py-2 border max-lg:border-t-0 max-lg:shadow-md max-lg:w-full max-lg:absolute flex max-lg:flex-col "}>
+      <div className={((open)?"expanding":" closing")+" gap-1 max-lg:p-3 bg-white lg:rounded-full max-lg:rounded-b-3xl lg:px-3 lg:border-l-0 lg:rounded-l-none lg:py-2 border max-lg:border-t-0 max-lg:shadow-md max-lg:w-full max-lg:absolute flex max-lg:flex-col "}>
         <FilterItem
           setOpen={setOpen}
           select={select == 0}
